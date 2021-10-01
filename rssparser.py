@@ -8,7 +8,6 @@ HEADERS = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36'
         }
  
-
 class ReadRss:
     def __init__(self, headers, url_list):
         self.reponse_objects = {}
@@ -28,9 +27,7 @@ class ReadRss:
         all_articles = []
 
         for key,value in self.reponse_objects.items():
-          
           #Each RSS site has its own structure, so, it's needed to parse each of them separately
-
             if key == "verge":
                 try:    
                     soup = BeautifulSoup(value.text, 'lxml')
