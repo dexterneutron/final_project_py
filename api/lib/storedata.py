@@ -1,5 +1,7 @@
-from rssparser import ReadRss, HEADERS
+import json
+from lib.rssparser import ReadRss
 from pymongo import MongoClient
+from bson import json_util
 
 class MongoConnection:
 
@@ -13,21 +15,17 @@ def store_data():
     connection = MongoConnection()
     articles_coll = connection.col #Collection:articles
 
-    feed = ReadRss(HEADERS, url_list = ["mashable","techcrunch","verge"])
+    feed = ReadRss(url_list = ["mashable","techcrunch","verge"])
     articles_list = feed.parse_articles()
     result = articles_coll.insert_many(articles_list)
 
 
 def get_data():
     connection = MongoConnection()
-    #CONNECTION_STRING = "mongodb://root:rootpassword@127.0.0.1:27017"
-    #client = MongoClient(CONNECTION_STRING)
-    #db = client.rss #Database name:rss
     articles_coll = connection.col #Collection:articles
-    #for x in articles_coll.find():
-    #    print(x)
-    print(articles_coll.count())
-# This is added so that many files can reuse the function get_database()
+    articles = list(articles_coll.find({}))
+    return json.loads(json_util.dumps(articles)) 
+
 if __name__ == "__main__":    
     # Get the database
     store_data()

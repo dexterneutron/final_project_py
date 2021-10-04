@@ -4,19 +4,19 @@ import requests
 VERGE_URL = 'https://www.theverge.com/rss/index.xml'
 TECHCRUNCH_URL = 'https://techcrunch.com/feed/'
 MASHABLE_URL = 'https://mashable.com/feeds/rss/all'
-HEADERS = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36'
-        }
  
 class ReadRss:
-    def __init__(self, headers, url_list):
+    HEADERS = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36'
+        }
+    def __init__(self, url_list):
         self.reponse_objects = {}
         urls = {"verge":VERGE_URL,"techcrunch":TECHCRUNCH_URL, "mashable":MASHABLE_URL}
         
         for page in url_list:
             rss_url =  urls[page]       
             try:
-                r = requests.get(rss_url, headers = headers)
+                r = requests.get(rss_url, headers = self.HEADERS)
                 self.reponse_objects[page] = r
             except Exception as e:
                 print('Error fetching the URL: ', rss_url)
@@ -87,6 +87,6 @@ class ReadRss:
  
 if __name__ == '__main__':
  
-    feed = ReadRss(HEADERS, url_list = ["mashable","techcrunch","verge"])
+    feed = ReadRss(url_list = ["mashable","techcrunch","verge"])
     #feed = feed.parse_articles()
     print(feed.parse_articles())
