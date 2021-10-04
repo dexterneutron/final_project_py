@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class Article(models.Model):
+    article_link = models.URLField(max_length=500, primary_key=True)
+    article_content = models.TextField
+    article_title = models.CharField(max_length=500)
+    article_source = models.CharField(max_length=50)
