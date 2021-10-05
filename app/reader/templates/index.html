@@ -1,0 +1,9 @@
+{% if articles %}
+    <ul>
+    {% for art in articles %}
+        <li><a href="{{ art.article_link }}/">{{ art.article_title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Articles are available.</p>
+{% endif %}

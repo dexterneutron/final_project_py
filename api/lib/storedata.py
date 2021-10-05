@@ -1,5 +1,6 @@
 import json
 from lib.rssparser import ReadRss
+#from rssparser import ReadRss
 from pymongo import MongoClient
 from bson import json_util
 
@@ -14,7 +15,7 @@ class MongoConnection:
 def store_data():
     connection = MongoConnection()
     articles_coll = connection.col #Collection:articles
-
+    articles_coll.delete_many({})
     feed = ReadRss(url_list = ["mashable","techcrunch","verge"])
     articles_list = feed.parse_articles()
     result = articles_coll.insert_many(articles_list)

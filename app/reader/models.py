@@ -5,3 +5,4 @@ class Article(models.Model):
     article_content = models.TextField
     article_title = models.CharField(max_length=500)
     article_source = models.CharField(max_length=50)
+     

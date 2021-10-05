@@ -1,10 +1,9 @@
 from django.http.response import HttpResponse
-from django.urls import path
-from django.urls.conf import include
+from django.conf.urls import url
+from reader import views
 
 from . import views
 
 urlpatterns = [
-path('', views.feed, name = "feed"),
-
+    url(r'^$', views.MainPage.as_view())
 ]
