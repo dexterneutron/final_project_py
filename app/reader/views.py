@@ -1,9 +1,6 @@
-import decimal
-from django.http import response
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from reader.models import Article
-from django.http import HttpResponse
 
 
 class MainPage(TemplateView):

@@ -1,6 +1,5 @@
 import json
 from lib.rssparser import ReadRss
-#from rssparser import ReadRss
 from pymongo import MongoClient
 from bson import json_util
 
@@ -26,8 +25,3 @@ def get_data():
     articles_coll = connection.col #Collection:articles
     articles = list(articles_coll.find({}))
     return json.loads(json_util.dumps(articles)) 
-
-if __name__ == "__main__":    
-    # Get the database
-    store_data()
-    get_data()
