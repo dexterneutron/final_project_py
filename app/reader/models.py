@@ -6,4 +6,5 @@ class Article(models.Model):
     article_title = models.CharField(max_length=500)
     article_source = models.CharField(max_length=50)
 
+
      

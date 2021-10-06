@@ -9,10 +9,6 @@ from django.http import HttpResponse
 class MainPage(TemplateView):
     
     def get(self, request, **kwargs):
-        #article = Article.objects    
-        #article_content = Article.article_content
-        #article_title = Article.article_title
-        #article_source = Article.article_title
-        article_list = Article.objects.all().values()
+        article_list = Article.objects.all().values()[::-1]
         context ={'articles':article_list}
         return render(request,'index.html', context)
