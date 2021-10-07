@@ -17,7 +17,7 @@ The Web App has a scheduled script that runs in the background, fetching data fr
 `docker-compose up`
 
  2. Create Virtual Environment
- `py -m venv env`
+ `py -m venv venv`
 
  3. Activate Virtual Env
 `venv\Scripts\activate`
